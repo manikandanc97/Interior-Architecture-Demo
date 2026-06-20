@@ -237,10 +237,30 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 99;
+        transform: translateY(-100%);
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    .navbar.menu-active {
+        mix-blend-mode: normal; /* Disable blend mode so text is visible over the dark menu background */
     }
     .menu-toggle {
         display: block;
+        z-index: 101;
     }
 }
 
@@ -351,6 +371,18 @@ h1, h2, h3, h4 {
     0% { width: 0%; left: 0; }
     50% { width: 100%; left: 0; }
     100% { width: 100%; left: 100%; }
+}
+
+@media (max-height: 800px) {
+    .hero-content {
+        margin-top: 2rem; /* Reduce top margin to prevent overlap */
+    }
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+    }
+    .scroll-indicator {
+        bottom: 1.5rem; /* Push down indicator */
+    }
 }
 
 /* =========================================
